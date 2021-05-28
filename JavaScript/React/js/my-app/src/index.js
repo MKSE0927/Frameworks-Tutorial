@@ -4,15 +4,27 @@ import './index.css';
 
 // React.Componentを継承する。ReactのDOM定義を行う。
 class Square extends React.Component {
-
+    
     /*  render()関数でReact要素を生成する。
         propsにある、「value」という名称の変数の値を利用する。
         propsは「親コンポーネントから子コンポーネント」に渡す。
     */
+    constructor(props) {
+        // JavScriptでのコンストラクタは常にsuper()の呼び出しが必要。
+        super(props)
+        this.state = {
+            value:null,
+        };
+    }
+
+    /*
+        stateを利用して値更新を行う。setState()で値を設定できる。
+        今回は、クリック時に自身(Squre)のstate.valueに'X'を設定する。
+    */
     render() {
       return (
-        <button className="square" onClick={() => {alert('Click!')}}>
-          {this.props.value}
+        <button className="square" onClick={() => {this.setState({value: 'X'})}}>
+          {this.state.value}
         </button>
       );
     }
