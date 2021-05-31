@@ -1,24 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import './index.css';
 
-// React.Componentを継承する。ReactのDOM定義を行う。
-class Square extends React.Component {
-    /*
-        stateを利用して値更新を行う。setState()で値を設定できる。
-        今回は、クリック時に自身(Squre)のstate.valueに'X'を設定する。
-    */
-    render() {
-      return (
-        <button className="square" onClick={() => {this.props.onClick()}}>
-          {this.props.value}
+// render()のみを実装し、stateを持たないコンポーネントを関数コンポーネントとできる。
+function Square(props) {
+    return(
+        <button className='Square' onClick={props.onClick} >
+            {props.value}
         </button>
-      );
-    }
-  }
-  
+    )
+}
   /**
-   * 升目(Square)の状態をstateで持ち、propsで描画する値が〇かXかを返す。
+   * マス目(Square)の状態をstateで持ち、propsで描画する値が〇かXかを返す。
    */
   class Board extends React.Component {
           
